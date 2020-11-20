@@ -30,6 +30,44 @@ $(document).ready(function () {
          
          cancelar();
      });
+     
+     var aux = localStorage.getItem("historial");
+    if (aux === null) {
+        var xd = [];
+        localStorage.setItem("historial", JSON.stringify(xd));
+    }
+    var guard = JSON.parse(localStorage.getItem("historial"));
+    
+      $("#descontar").click(function(){
+      var prod = [];
+        for (var i = 0; i < guardado.length; i++) {
+            var datos = guardado[i].toString().split(',');
+            var el = {"desc": datos[0], "precio": datos[1]};
+            prod.push(el);
+        }
+        
+                if (prod.length !== 0) {
+            var c = confirm("Desea realizar realizar el pago");
+            if (c) {
+                var f = new Date();
+                var fecha = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
+
+                var pago = {
+                     "productos": prod, "total": total + " Q", "fecha": fecha
+                };
+
+                guard.push(pago);
+                localStorage.setItem("historial", JSON.stringify(guard));
+                console.log(guard);
+                cancelar();
+                alert("Compra realizada con exito, para seguir comprando regrese a la lista de productos :)");
+            }
+        } else {
+            alert("No hay productos en carro");
+        }
+     });
+     
+     
   var cancelar=  function (){
       $("tr").remove();
       var tb=`<tr>
