@@ -12,7 +12,7 @@ $(document).ready(function () {
     $(".b").click(function(){
         
         var valor=$(this).val();
-       alert("se añadio al carrito de compras el producto: "+valor);
+       alert("Producto añadido");
         var nombre = $("#p"+valor + " h4").text() ;
         var precio = $("#p"+valor + " h5").text() ;
         
