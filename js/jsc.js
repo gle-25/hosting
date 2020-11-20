@@ -47,7 +47,7 @@ $(document).ready(function () {
         }
         
                 if (prod.length !== 0) {
-            var c = confirm("Desea realizar realizar el pago");
+            var c = confirm("Desea realizar la compra");
             if (c) {
                 var f = new Date();
                 var fecha = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
@@ -60,10 +60,10 @@ $(document).ready(function () {
                 localStorage.setItem("historial", JSON.stringify(guard));
                 console.log(guard);
                 cancelar();
-                alert("Compra realizada con exito, para seguir comprando regrese a la lista de productos :)");
+                alert("Compra exitosa");
             }
         } else {
-            alert("No hay productos en carro");
+            alert("Vacio");
         }
      });
      
